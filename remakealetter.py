@@ -44,4 +44,5 @@ def reMakeALetter(only_Key, num):
     # ltime=0
     # print(output)
 
+    
     '''失败版本！难度过大暂时无法实现'''
