@@ -6,7 +6,7 @@
 
 另外本项目目前使用的随机模块是random，通过字符列表中的随机抽取生成诗词，如果需要复原则再次调用random的种子（众所周知random是伪随机）
 
-**当前main function包含内容：**random任意格式诗词生成、random任意格式诗词复原
+**当前main function包含内容** random任意格式诗词生成、random任意格式诗词复原
 
 当前的项目维护者:[MRX-J0BS](https://github.com/MRX-J0BS)
 
