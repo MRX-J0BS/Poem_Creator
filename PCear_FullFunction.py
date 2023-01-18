@@ -2,18 +2,19 @@ import random
 from random import shuffle
 import math
 import datetime
-import time as timee #因为命名原因time被占用了，以后版本会修复！
+import time as timee  # 因为命名原因time被占用了，以后版本会修复！
 
-pcear_version='v0.0'
+pcear_version = 'v0.0'
 charList = []
 
 for i in range(0x4e00, 0x9fa6):
     charList.append(chr(i))
 
+
 # def show():
 
 
-def makeALetter(num=5, time=4):
+def makeALetter(num=5, time=4,mode='letter'):
     onlykey = random.getstate()
     # num 每行有几个字  time 有几行
     # num
@@ -24,7 +25,7 @@ def makeALetter(num=5, time=4):
     # print(possible)
 
     # 以下用于抽取字符
-    runtime = time*num
+    runtime = time * num
     while runtime > 0:
         tempLetter.append(random.choice(charList))
         runtime -= 1
@@ -33,29 +34,32 @@ def makeALetter(num=5, time=4):
     output = ''
     ltime = 0
     for i in tempLetter:
-        if ltime < num-1:
-            output = output+i
+        if ltime < num - 1:
+            output = output + i
             ltime += 1
         else:
-            output = output+i+'\n'
+            output = output + i + '\n'
             ltime = 0
-    
-    print(output)
-    output_final=('PCeaer Version'+str(pcear_version)+' 创建于：'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    print(output_final)
-    print('____________以下是唯一生成密钥____________')
-    timee.sleep(3)
-    print(str(onlykey))
 
-
-    return onlykey,output
-
+    #print(output)
+    output_final = (
+                'PCeaer Version' + str(pcear_version) + ' 创建于：' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n'+output)
+    #print(output_final)
+    #print('____________以下是唯一生成密钥____________')
+    #timee.sleep(3)
+    #print(str(onlykey))
+    if mode == 'letter':
+        return output_final
+    if mode == 'key':
+        return onlykey
+    elif mode == 'key+letter' or 'letter+key':
+        return output_final+str(onlykey)
 
 
 def remakealetter_random(key, num, time):
     random.setstate(key)
     tempLetter = []
-    runtime = time*num
+    runtime = time * num
     while runtime > 0:
         tempLetter.append(random.choice(charList))
         runtime -= 1
@@ -64,11 +68,10 @@ def remakealetter_random(key, num, time):
     output = ''
     ltime = 0
     for i in tempLetter:
-        if ltime < num-1:
-            output = output+i
+        if ltime < num - 1:
+            output = output + i
             ltime += 1
         else:
-            output = output+i+'\n'
+            output = output + i + '\n'
             ltime = 0
-    print(output)
-
+    return output
